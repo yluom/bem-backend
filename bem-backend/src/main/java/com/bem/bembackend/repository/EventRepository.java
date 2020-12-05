@@ -8,7 +8,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import com.bem.bembackend.domain.Event;
 
-@RepositoryRestResource(collectionResourceRel = "events", path = "events")
+@RepositoryRestResource(collectionResourceRel = "event", path = "events")
 public interface EventRepository extends PagingAndSortingRepository<Event, Long> {
 
 	List<Event> findByName(@Param("name") String name);

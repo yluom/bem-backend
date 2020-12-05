@@ -23,7 +23,7 @@ public class EventController {
 		return e;
 	}
 
-	@RequestMapping("/")
+	@RequestMapping("/hello")
 	public String index() {
 		return "Hello Springboooot";
 	}
