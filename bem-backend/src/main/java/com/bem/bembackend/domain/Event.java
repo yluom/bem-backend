@@ -1,5 +1,6 @@
 package com.bem.bembackend.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,14 +17,18 @@ public class Event {
 
 	public String name;
 
+//	@Column(name = "startDateTime", nullable = true)
+//	private LocalDateTime startDateTime;
+
+	@Column(nullable = true)
+	public Double latitude;
+
+	@Column(nullable = true)
+	public Double longitude;
+
 	protected Event() {
 	};
 
-	public Event(long id, String name) {
-		super();
-		this.id = id;
-		this.name = name;
-	}
 
 	public Event(String name) {
 		super();
@@ -55,8 +60,46 @@ public class Event {
 		if (name != null) {
 			builder.append("name=");
 			builder.append(name);
+			builder.append(", ");
 		}
+		builder.append("latitude=");
+		builder.append(latitude);
+		builder.append(", longitude=");
+		builder.append(longitude);
 		builder.append("]");
 		return builder.toString();
 	}
+
+	public double getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(double latitude) {
+		this.latitude = latitude;
+	}
+
+	public double getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(double longitude) {
+		this.longitude = longitude;
+	}
+
+//	public LocalDateTime getStartDateTime() {
+//		return startDateTime;
+//	}
+//
+//	public void setStartDateTime(LocalDateTime startDateTime) {
+//		this.startDateTime = startDateTime;
+//	}
+
+	public void setLatitude(Double latitude) {
+		this.latitude = latitude;
+	}
+
+	public void setLongitude(Double longitude) {
+		this.longitude = longitude;
+	}
+
 }

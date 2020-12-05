@@ -1,5 +1,7 @@
 package com.bem.bembackend;
 
+import java.util.Random;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -57,14 +59,17 @@ public class BemBackendApplication {
 	}
 
 	@Bean
-	public CommandLineRunner run(EventRepository userRepository) throws Exception {
+	public CommandLineRunner run(EventRepository eventRepository) throws Exception {
 		return (String[] args) -> {
-//        	Event user1 = new Event("John");
-//            Event user2 = new Event("Julie");
-//            userRepository.save(user1);
-//            userRepository.save(user2);
-log.debug("Events :");
-			userRepository.findAll().forEach(user -> log.debug(user.toString()));
+			// Let's create random events on startup (easy way to populate database with content lol)
+			Random r = new Random();
+			Event evt = new Event("Swissbeatbox #" + r.nextInt(1000));
+			evt.setLatitude(r.nextInt(360) + r.nextDouble());
+			evt.setLongitude(r.nextInt(360) + r.nextDouble());
+//			evt.setStartDateTime(LocalDateTime.now().plusDays(r.nextInt(100)));
+			eventRepository.save(evt);
+			log.debug("Events :");
+			eventRepository.findAll().forEach(user -> System.out.print(user.toString() + "\n"));
 		};
 	}
 }
