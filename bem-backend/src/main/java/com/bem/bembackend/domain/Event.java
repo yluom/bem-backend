@@ -3,22 +3,21 @@ package com.bem.bembackend.domain;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-
-//import javax.persistence.Entity;
-//import javax.persistence.GeneratedValue;
-//import javax.persistence.GenerationType;
-
-import org.springframework.data.annotation.Id;
-
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "bem_events")
 public class Event {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public long id;
 
 	public String name;
+
+	protected Event() {
+	};
 
 	public Event(long id, String name) {
 		super();
@@ -45,5 +44,19 @@ public class Event {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Event [id=");
+		builder.append(id);
+		builder.append(", ");
+		if (name != null) {
+			builder.append("name=");
+			builder.append(name);
+		}
+		builder.append("]");
+		return builder.toString();
 	}
 }

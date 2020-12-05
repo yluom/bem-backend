@@ -1,7 +1,5 @@
-# Read Me First
-The following was discovered as part of building this project:
-
-* The original package name 'com.bem.bem-backend' is invalid and this project uses 'com.bem.bembackend' instead.
+# Launch POSTGRES
+docker run --rm --name pg-docker -e POSTGRES_PASSWORD=secretpass -p 5432:5432 -v $HOME/docker/volumes/postgres:/var/lib/postgresql/data postgres -d postgres
 
 # Getting Started
 

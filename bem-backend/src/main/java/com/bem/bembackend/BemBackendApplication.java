@@ -19,7 +19,7 @@ public class BemBackendApplication {
 		SpringApplication.run(BemBackendApplication.class, args);
 	}
 
-	@Bean
+	// @Bean
 	public CommandLineRunner demo(EventRepository repository) {
 		return (args) -> {
 			// save a few customers
@@ -53,6 +53,18 @@ public class BemBackendApplication {
 			// log.info(bauer.toString());
 			// }
 			log.info("");
+		};
+	}
+
+	@Bean
+	public CommandLineRunner run(EventRepository userRepository) throws Exception {
+		return (String[] args) -> {
+//        	Event user1 = new Event("John");
+//            Event user2 = new Event("Julie");
+//            userRepository.save(user1);
+//            userRepository.save(user2);
+log.debug("Events :");
+			userRepository.findAll().forEach(user -> log.debug(user.toString()));
 		};
 	}
 }
