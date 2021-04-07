@@ -16,15 +16,20 @@ public class EventController {
 	@Resource
 	public EventRepository repo;
 
-	@GetMapping("/addEvent")
+	@GetMapping("/customAddEvent")
 	public Event sampleEvent(@RequestParam(value = "name", defaultValue = "WBC") String name) {
 		Event e = new Event(name);
 		repo.save(e);
 		return e;
 	}
 
-	@RequestMapping("/hello")
+	@RequestMapping("/up")
 	public String index() {
-		return "Hello Springboooot";
+		return "true";
+	}
+
+	@GetMapping("/all")
+	public Iterable<Event> getAllEvents() {
+		return   repo.findAll();
 	}
 }
