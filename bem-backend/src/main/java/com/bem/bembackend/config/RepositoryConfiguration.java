@@ -12,6 +12,10 @@ public class RepositoryConfiguration implements RepositoryRestConfigurer {
 	@Override
 	public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config) {
 		config.exposeIdsFor(Event.class);
+
+		// remove _embedded
+//		config.setDefaultMediaType(MediaType.APPLICATION_JSON);
+//		config.useHalAsDefaultJsonMediaType(false);
 	}
 
 	@Bean
