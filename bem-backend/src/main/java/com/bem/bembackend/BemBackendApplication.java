@@ -1,5 +1,7 @@
 package com.bem.bembackend;
 
+import java.util.Optional; // Added for Optional
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -37,10 +39,15 @@ public class BemBackendApplication {
 			log.info("");
 
 			// fetch an individual customer by ID
-			Event customer = repository.findById(1L);
-			log.info("Customer found with findById(1L):");
-			log.info("--------------------------------");
-			log.info(customer.toString());
+			Optional<Event> customerOptional = repository.findById(1L);
+			if (customerOptional.isPresent()) {
+				Event customer = customerOptional.get();
+				log.info("Customer found with findById(1L):");
+				log.info("--------------------------------");
+				log.info(customer.toString());
+			} else {
+				log.info("Customer with findById(1L) not found.");
+			}
 			log.info("");
 
 			// fetch customers by last name
