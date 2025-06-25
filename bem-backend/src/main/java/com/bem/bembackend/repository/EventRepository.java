@@ -11,6 +11,12 @@ import com.bem.bembackend.domain.Event;
 @RepositoryRestResource(collectionResourceRel = "events", path = "events")
 public interface EventRepository extends JpaRepository<Event, Long> {
 
-	List<Event> findByName(@Param("name") String name);
+	/**
+ * Retrieves a list of Event entities with the specified name.
+ *
+ * @param name the name to filter events by
+ * @return a list of events matching the given name
+ */
+List<Event> findByName(@Param("name") String name);
 
 }
