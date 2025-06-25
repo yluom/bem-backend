@@ -21,6 +21,12 @@ public class BemBackendApplication {
 		SpringApplication.run(BemBackendApplication.class, args);
 	}
 
+	/**
+	 * Initializes the database with sample Event entities and logs query results at application startup.
+	 *
+	 * This CommandLineRunner bean saves several Event instances, retrieves and logs all events,
+	 * attempts to find an event by ID, and queries events by name for demonstration purposes.
+	 */
 	@Bean
 	public CommandLineRunner demo(EventRepository repository) {
 		return (args) -> {

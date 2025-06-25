@@ -15,10 +15,19 @@ public class Event {
 
 	public String name;
 
+	/**
+	 * Protected no-argument constructor required by JPA for entity instantiation.
+	 */
 	protected Event() {
 		// JPA requirement
 	}
 
+	/**
+	 * Constructs an Event with the specified id and name.
+	 *
+	 * @param id   the unique identifier for the event
+	 * @param name the name of the event
+	 */
 	public Event(long id, String name) {
 		super();
 		this.id = id;
